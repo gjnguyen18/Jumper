@@ -5,8 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Projectile extends JComponent
-{
+public class Projectile extends JComponent {
    private int x;
    private int y;
    private int w;
@@ -14,31 +13,26 @@ public class Projectile extends JComponent
    private boolean firing = false;
    private int resetCounter;
    
-   public Projectile(String path, int xPos, int yPos)
-	{
+   public Projectile(String path, int xPos, int yPos) {
 		this(new ImageIcon(path).getImage(), xPos, yPos);	
 	}
 
-   public Projectile(Image img, int xPos, int yPos)
-   {
+   public Projectile(Image img, int xPos, int yPos) {
       x = xPos;
       y = yPos;
       image = img;
       w = img.getWidth(null);
    }
    
-   public int getX()
-   {
+   public int getX() {
       return x;
    }
    
-   public Image getImage()
-   {
+   public Image getImage() {
       return image;
    }
    
-   public int getY()
-   {
+   public int getY() {
       return y;
    }
    
@@ -50,56 +44,44 @@ public class Projectile extends JComponent
   	 return image.getHeight(null);
    }
    
-   public void countdown()
-   {
+   public void countdown() {
       resetCounter++;
    }
    
-   public void startCounter()
-   {
+   public void startCounter() {
       resetCounter = 0;
    }
    
-   public int getCounter()
-   {
+   public int getCounter() {
       return resetCounter;
    }
    
-   public boolean isFiring()
-   {
+   public boolean isFiring() {
       return firing;
    }
    
-   public void setPos(int xPos, int yPos)
-   {
-      if(!firing)
-      {
+   public void setPos(int xPos, int yPos) {
+      if(!firing) {
          x = xPos;
          y = yPos;
       }
    }
   
-   public void setImage(Image img)
-   {
+   public void setImage(Image img)  {
       image = img;
    }
    
-   public void setFiring(boolean f)
-   {
+   public void setFiring(boolean f) {
       firing = f;
    }
    
-   public void move(int amount)
-   {
+   public void move(int amount){
       x += amount;
    }
    
-   public boolean collide(Unit unit)
-   {
-      if(y+60 > unit.getY() && y < unit.getY()+unit.getH())
-      {
-         if(x+w >= unit.getX() && x+w <= unit.getX()+250 )
-         {
+   public boolean collide(Unit unit){
+      if(y+60 > unit.getY() && y < unit.getY()+unit.getH()) {
+         if(x+w >= unit.getX() && x+w <= unit.getX()+250 ){
             return true;
          }
          return false;

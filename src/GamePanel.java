@@ -4,11 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
-public class GamePanel extends JPanel 
-{ 
+public class GamePanel extends JPanel { 
 	 private Image background;	
 	 private ArrayList<Platform> platforms;
-	 private ArrayList<Saw> saws;
 	 private ArrayList<Box> boxes;
 	 private ArrayList<Unit> units;
 	 private ArrayList<Platform> base;
@@ -23,11 +21,9 @@ public class GamePanel extends JPanel
 	 private Title blue;
 	 private Clock clock;
    
-	public GamePanel(String path) 
-  	{
+	public GamePanel(String path) {
   		this(new ImageIcon(path).getImage());
       platforms = new ArrayList<Platform>();
-      saws = new ArrayList<Saw>();
       boxes = new ArrayList<Box>();
       units = new ArrayList<Unit>();
       base = new ArrayList<Platform>();
@@ -43,8 +39,7 @@ public class GamePanel extends JPanel
       test = player.hitbox();
   	}   
    
-  	public GamePanel(Image img)
-  	{
+  	public GamePanel(Image img)	{
     	background = img;
     	Dimension size = new Dimension(1200, 700);//img.getWidth(null), img.getHeight(null));	
      	setPreferredSize(size);
@@ -53,28 +48,22 @@ public class GamePanel extends JPanel
     	setSize(size);
   	}
 
-  	public void paintComponent(Graphics g) 
-  	{	
+  	public void paintComponent(Graphics g) {	
     	g.drawImage(background, 0, 0, null); 
-      for(Unit img:units)
-      {
+      for(Unit img:units) {
          g.drawImage(img.getImage(), (int)(img.getX()*.5), (int)(img.getY()*.5), (int)(img.getW()*.5), (int)(img.getH()*.5), null);
       }
-      for(Platform img:base)
-      {
+      for(Platform img:base) {
          g.drawImage(img.getImage(), (int)(img.getX()*.5), (int)(img.getY()*.5), (int)(img.getW()*.5), (int)(img.getH()*.5), null);
       }
-      for(Platform img:startBase)
-      {
+      for(Platform img:startBase) {
          g.drawImage(img.getImage(), (int)(img.getX()*.5), (int)(img.getY()*.5), (int)(img.getW()*.5), (int)(img.getH()*.5), null);
       }      
-      for(Platform img:placement)
-      {
+      for(Platform img:placement) {
          g.drawImage(img.getImage(), (int)(img.getX()*.5), (int)(img.getY()*.5), (int)(img.getW()*.5), (int)(img.getH()*.5), null);
       }
       
-      for(int i = 0; i<6; i++)
-      {  
+      for(int i = 0; i<6; i++) {  
          g.drawImage(clock.getImage(i), (int)(clock.getX()+50*i), (int)(clock.getY()), null);
       }
       
@@ -92,9 +81,8 @@ public class GamePanel extends JPanel
       		 (int)(restart.getW()*.5), (int)(restart.getH()*.5),null);
    }
   	
-  	public void update(ArrayList<Unit> newUnits, Player newPlayer, ArrayList<Platform> newBase, 
-         Projectile newProj, Title newTitle, ArrayList<Platform> newStartBase, ArrayList<Platform> newPlacement, Title newEnd)
-  	{
+   public void update(ArrayList<Unit> newUnits, Player newPlayer, ArrayList<Platform> newBase, 
+         Projectile newProj, Title newTitle, ArrayList<Platform> newStartBase, ArrayList<Platform> newPlacement, Title newEnd) {
       units = newUnits;
       base = newBase;
       player = newPlayer;
@@ -104,17 +92,14 @@ public class GamePanel extends JPanel
       startBase = newStartBase;
       placement = newPlacement;
   		repaint();  
-  	}
-   public void updateEnd(Title newBlue, Title newRestart)
-   {
+   }
+  	
+   public void updateEnd(Title newBlue, Title newRestart) {
       blue = newBlue;
       restart = newRestart;
    }
-   
-   
-   public void updateTimer(Clock newClock)
-   {
+
+   public void updateTimer(Clock newClock) {
       clock = newClock;
    }
-   
 }

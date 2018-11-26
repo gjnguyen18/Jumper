@@ -1,16 +1,13 @@
 //Main
 
-import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Jumper extends JComponent implements KeyListener
-{
+public class Jumper implements KeyListener {
    public boolean[] key = new boolean[256];
    private JFrame frame;
-   private ArrayList<Saw> saws;
    private ArrayList<Box> boxes;
    private ArrayList<Platform> platforms;
    private ArrayList<Unit> units;
@@ -37,7 +34,6 @@ public class Jumper extends JComponent implements KeyListener
    public void keyTyped(KeyEvent e) {}
 
    public Jumper() {  
-      saws = new ArrayList<Saw>();
       boxes = new ArrayList<Box>();     
       platforms = new ArrayList<Platform>();
       units = new ArrayList<Unit>();
@@ -67,7 +63,6 @@ public class Jumper extends JComponent implements KeyListener
       frame.setVisible(true);     
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setResizable(true);
-      //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
    }
    
    public void addObjects() {
