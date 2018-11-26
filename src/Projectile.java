@@ -42,6 +42,14 @@ public class Projectile extends JComponent
       return y;
    }
    
+   public int getW() {
+  	 return image.getWidth(null);
+   }
+   
+   public int getH() {
+  	 return image.getHeight(null);
+   }
+   
    public void countdown()
    {
       resetCounter++;
